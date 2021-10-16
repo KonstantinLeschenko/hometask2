@@ -16,7 +16,9 @@ class HomeViewState extends State<HomeView> {
   User('Lauren', 'Davis', 'Google inc', 'assets/default_user_photo.png', false),
   User('Sam', 'Barnard', 'UC Berkely', 'assets/default_user_photo.png', false),
   User('Megan', 'Blakely', 'Husky energy', 'assets/default_user_photo.png', false),
-  User('Joel', 'Cannon', 'Hooli Inc', 'assets/default_user_photo.png', true)
+  User('Joel', 'Cannon', 'Hooli Inc', 'assets/default_user_photo.png', true),
+  User('Jhon', 'Lennon', 'The Beatles', 'assets/default_user_photo.png', true),
+  User('Igor', 'Smelyanskiy', 'UkrPochta', 'assets/default_user_photo.png', false)
 
   ];
 
@@ -39,7 +41,7 @@ class HomeViewState extends State<HomeView> {
     final user = users[index];
     final username = '${user.firstName}  ${user.lastName}';
     bool fav = user.isFavorite;
-   
+
     return Container(
       color: Colors.grey[400],
       child: Card(
