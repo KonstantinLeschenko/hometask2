@@ -9,28 +9,25 @@ class HomeView extends StatefulWidget {
 }
 
 class HomeViewState extends State<HomeView> {
-
   List<User> users = [
-  User('John', 'Agnew', 'Stanford University', 'assets/default_user_photo.png', true),
-  User('Joshua', 'Allison', 'Hooli Inc', 'assets/default_user_photo.png', false),
-  User('Lauren', 'Davis', 'Google inc', 'assets/default_user_photo.png', false),
-  User('Sam', 'Barnard', 'UC Berkely', 'assets/default_user_photo.png', false),
-  User('Megan', 'Blakely', 'Husky energy', 'assets/default_user_photo.png', false),
-  User('Joel', 'Cannon', 'Hooli Inc', 'assets/default_user_photo.png', true),
-  User('Jhon', 'Lennon', 'The Beatles', 'assets/default_user_photo.png', true),
-  User('Igor', 'Smelyanskiy', 'UkrPochta', 'assets/default_user_photo.png', false)
-
+    User('John', 'Agnew', 'Stanford University', 'assets/john_agnew.jpg', true),
+    User('Joshua', 'Allison', 'Hooli Inc', 'assets/joshua_allison.jpg', false),
+    User('Lauren', 'Davis', 'Google inc', 'assets/lauren_davis.jpg', false),
+    User('Sam', 'Barnard', 'UC Berkely', 'assets/sam_barnard.jpg', false),
+    User('Megan', 'Blakely', 'Husky energy', 'assets/megan_blakely.jpg', false),
+    User('Joel', 'Cannon', 'Hooli Inc', 'assets/joel_cannon.jpg', true),
+    User('Jhon', 'Lennon', 'The Beatles', 'assets/jhon_lennon.jpg', true),
+    User('Igor', 'Smelyanskiy', 'UkrPochta', 'assets/igor_smelyanskiy.jpg',
+        false)
   ];
-
 
   @override
   Widget build(BuildContext context) {
-
-
     users.sort((a, b) => a.lastName.compareTo(b.lastName));
 
     return Container(
-      child: ListView.builder(
+      color: Colors.grey[100],
+       child: ListView.builder(
           itemCount: users.length,
           itemBuilder: (BuildContext context, int index) =>
               buildUserCard(context, index)),
@@ -43,65 +40,73 @@ class HomeViewState extends State<HomeView> {
     bool fav = user.isFavorite;
 
     return Container(
-      color: Colors.grey[400],
-      child: Card(
         color: Colors.grey[100],
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+          child: Card(
+            color: Colors.grey[100],
+              child: Row(
                 children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.star,
-                        color: fav ? Colors.blue : Colors.transparent,),
-                    onPressed: () {
-                      setState(() {
-                        fav == false ? true: false;
-                        user.isFavorite = fav;
-                      });
-                    },
-                   )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage(user.photoURL.toString()),
-                    backgroundColor: Colors.transparent,
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    username.toString(),
-                    style: const TextStyle(fontSize: 30.0),
+                  Padding(
+                    padding: const EdgeInsets.all(0.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.star,
+                            color: fav ? Colors.blue : Colors.transparent,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              fav == false ? true : false;
+                              user.isFavorite = fav;
+                            });
+                          },
+                        )
+                      ],
+                    ),
                   ),
-                  Text(
-                    user.company.toString(),
-                    style: const TextStyle(fontSize: 12.0),
+                  Padding(
+                    padding: const EdgeInsets.all(0.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: AssetImage(user.photoURL.toString()),
+                          backgroundColor: Colors.transparent,
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20.0, top: 0.0, right: 0.0, bottom: 0.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            username.toString(),
+                            style: TextStyle(
+                                fontSize: 25.0,
+                                color: Colors.grey[800],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            user.company.toString(),
+                            style: TextStyle(fontSize: 12.0, color: Colors.grey[500]),
+                          )
+                        ],
+                      ),
+                    ),
                   )
                 ],
               ),
-            )
-          ],
-        ),
-      ),
+
+          ),
+
+
     );
   }
-
-
 }

@@ -60,6 +60,14 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/default_user_photo.png
+    - assets/john_agnew.jpg
+    - assets/joshua_allison.jpg
+    - assets/sam_barnard.jpg
+    - assets/lauren_davis.jpg
+    - assets/jhon_lennon.jpg
+    - assets/igor_smelyanskiy.jpg
+    - assets/joel_cannon.jpg
+    - assets/megan_blakely.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
